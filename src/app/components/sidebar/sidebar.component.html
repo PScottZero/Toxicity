@@ -1,0 +1,17 @@
+<img src="../../../assets/logo.svg">
+<input type="text" [(ngModel)]="searchText" [placeholder]="placeholder" (keyup.enter)="analyze()">
+<div id="description">
+  <p>
+    Toxicity performs sentiment analysis on reddit comments from a given subreddit,
+    or Twitter posts with a given hashtag. The analysis returns an average of the sentiment
+    scores of each comment/post, and rates them according to this scale: <br><br>
+    Non-Toxic (Score &#8805; 2)<br>
+    Very Positive (1 &#8804; Score < 2)<br>
+    Positive (0.25 &#8804; Score < 1)<br>
+    Neutral (-0.25 < Score < 0.25)<br>
+    Negative (-1 < Score &#8804; -0.25)<br>
+    Very Negative (-2 < Score &#8804; -1)<br>
+    Toxic (Score &#8804; -2)
+  </p>
+</div>
+<p id="footer_text">{{footerText}}</p>
