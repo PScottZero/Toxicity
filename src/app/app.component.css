@@ -17,6 +17,7 @@ app-data-container {
   position: relative;
   float: right;
   width: 100%;
+  min-width: 60em;
   margin-left: 22em;
   height: 100vh;
   text-align: center;

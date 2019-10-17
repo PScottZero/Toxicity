@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.placeholder = 'Enter a subreddit or hashtag';
-    this.footerText = 'Created by Paul Scott, 13 October 2019';
+    this.footerText = 'Created by Paul Scott, 17 October 2019';
   }
 
   analyze() {
