@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "angular-cli-ghpages": "^0.6.0",
     "rxjs": "~6.4.0",
     "sentiment": "^5.0.2",
     "serialize-javascript": "^2.1.1",
