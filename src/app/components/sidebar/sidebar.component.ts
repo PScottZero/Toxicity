@@ -8,12 +8,11 @@ import {RedditApiService} from '../../services/reddit-api.service';
 })
 export class SidebarComponent {
   showDropDown = false;
+  searchText: string;
 
   placeholder = 'Enter a subreddit';
   createdBy = 'Created by Paul Scott using Angular';
-  lastUpdated = 'Last Updated 6 December 2019';
-  searchText: string;
-
+  lastUpdated = 'Last Updated 7 December 2019';
   description = 'Toxicity performs sentiment analysis on a large sample of comments from a given subreddit. ' +
     'The subreddit\'s "toxicity" is then rated using the following scale:';
 

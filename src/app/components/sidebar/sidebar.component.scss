@@ -1,60 +1,4 @@
-#sidebar {
-  z-index: 1;
-  position: fixed;
-  background: black;
-  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.50);
-  text-align: center;
-  color: #cccccc;
-  overflow: hidden;
-
-  @media screen and (min-width: 700px) {
-    float: left;
-    width: 22em;
-    height: 100vh;
-  }
-
-  @media screen and (max-width: 700px) {
-    top: 0;
-    border-radius: 1em;
-    margin: 1em;
-    height: 10em;
-    transition: 0.3s;
-  }
-}
-
-img {
-  width: 80%;
-  margin-top: 5em;
-
-  @media screen and (max-width: 700px) {
-    margin-top: 1em;
-    height: 3em;
-  }
-}
-
-input {
-  width: 80%;
-  margin-top: 5em;
-  padding: .5em;
-  border-radius: 5em;
-  background: #333;
-  text-align: center;
-  color: white;
-
-  &::placeholder {
-    color: #bababa;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 4px gray;
-  }
-
-  @media screen and (max-width: 700px) {
-    width: available;
-    margin: 0 0 1em 0;
-  }
-}
+@import '../../../variables';
 
 #description {
   margin: 5em auto 0 auto;
@@ -62,7 +6,7 @@ input {
   line-height: 1.5em;
   width: 80%;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $mobile_cutoff) {
     height: 0;
     overflow: hidden;
     text-align: center;
@@ -71,12 +15,68 @@ input {
   }
 }
 
+#sidebar {
+  z-index: 1;
+  position: fixed;
+  background: black;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.50);
+  text-align: center;
+  color: #cccccc;
+
+  @media screen and (min-width: $mobile_cutoff) {
+    float: left;
+    width: 22em;
+    height: 100vh;
+  }
+
+  @media screen and (max-width: $mobile_cutoff) {
+    top: 0;
+    border-radius: 1em;
+    margin: 1em;
+    height: 10em;
+    transition: 0.3s;
+  }
+
+  img {
+    width: 80%;
+    margin-top: 5em;
+
+    @media screen and (max-width: $mobile_cutoff) {
+      margin-top: 1em;
+      height: 3em;
+    }
+  }
+
+  input {
+    width: 80%;
+    margin-top: 5em;
+    padding: .5em;
+    border-radius: 5em;
+    background: #333;
+    text-align: center;
+    color: white;
+
+    &::placeholder {
+      color: #bababa;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 4px gray;
+    }
+
+    @media screen and (max-width: $mobile_cutoff) {
+      margin: 0 0 1em 0;
+    }
+  }
+}
+
 .menu_icon {
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: $mobile_cutoff) {
     display: none;
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $mobile_cutoff) {
     height: 2em;
     width: 2em;
     margin: 0 auto;
@@ -98,12 +98,12 @@ input {
   }
 }
 
-.show_menu {
-  height: 34em !important;
-}
-
 .show_description {
   height: 24em !important;
+}
+
+.show_menu {
+  height: 34em !important;
 }
 
 .rotate {

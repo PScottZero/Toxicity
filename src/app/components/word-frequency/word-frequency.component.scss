@@ -1,31 +1,29 @@
-#word_frequency {
-  display: block;
-  background: #111111cc;
-  height: 16em;
-  padding: 2em;
-  line-height: 2em;
-  overflow-y: auto;
-  text-align: left;
-  word-break: break-word;
-}
-
-p {
-  display: inline;
-  color: white;
-  font-size: 18px;
-
-  @media screen and (max-width: 700px) {
-    font-size: 20px;
-  }
-}
+@import '../../../variables';
 
 h1 {
   text-align: center;
   font-size: 28px;
   color: white;
   font-weight: normal;
+  margin-bottom: 32px;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $mobile_cutoff) {
     font-size: 20px;
   }
+}
+
+p {
+  display: inline;
+  color: white;
+  line-height: 2;
+  font-size: 20px;
+}
+
+#word_frequency {
+  background: $div_color_two;
+  height: auto;
+  padding: 2em;
+  overflow-y: auto;
+  text-align: left;
+  word-break: break-word;
 }

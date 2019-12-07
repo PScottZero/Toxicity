@@ -1,6 +1,6 @@
-<div id="comments">
+<div id="comments_header">
   <h1> Comments (Best to Worst) </h1>
-  <div class="comment" *ngFor="let comment of getComments()">
-    <p>"{{comment.text}}" (Rating: {{getRating(comment.score)}})</p>
-  </div>
+</div>
+<div class="comment" *ngFor="let comment of getComments()">
+  <p>"{{comment.text}}" (Rating: {{getRating(comment.score)}})</p>
 </div>

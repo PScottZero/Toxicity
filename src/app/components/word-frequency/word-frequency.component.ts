@@ -10,7 +10,8 @@ export class WordFrequencyComponent {
 
   constructor(private redditApiService: RedditApiService) { }
 
+  // returns word frequency list
   getWordFrequency(): [string, number][] {
-    return this.redditApiService.getWordFrequency();
+    return this.redditApiService.wordFreqList;
   }
 }

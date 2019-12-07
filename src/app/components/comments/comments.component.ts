@@ -13,10 +13,12 @@ export class CommentsComponent {
   constructor(private redditApiService: RedditApiService,
               private sentimentService: SentimentService) { }
 
+  // returns subreddit comments
   getComments(): Comment[] {
     return this.redditApiService.comments;
   }
 
+  // returns rating for comment
   getRating(score: number): string {
     return this.sentimentService.getRating(score);
   }

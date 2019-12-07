@@ -3,6 +3,7 @@ import {Comment} from '../objects/Comment';
 import Submission from 'snoowrap/dist/objects/Submission';
 import Listing from 'snoowrap/dist/objects/Listing';
 import {SentimentService} from './sentiment.service';
+import * as Stopword from 'stopword';
 import * as Snoowrap from 'snoowrap';
 import * as UUID from 'uuid/v1';
 
@@ -17,6 +18,8 @@ export class RedditApiService {
   worstWord: string;
   maxWordScore: number;
   minWordScore: number;
+  wordFreqList: [string, number][];
+  averageScore: number;
   snoowrap: Snoowrap;
 
   constructor(private sentimentService: SentimentService) {
@@ -46,6 +49,9 @@ export class RedditApiService {
                 this.comments.push(new Comment(comment.body,
                   this.sentimentService.calculateScore(comment.body)));
               }
+              this.calculateAverageScore();
+              this.sortCommentsBestToWorst();
+              this.calculateWordFrequency();
             });
         }
       });
@@ -59,22 +65,22 @@ export class RedditApiService {
     return this.snoowrap.getSubmission(postId).expandReplies({limit: 20, depth: 1});
   }
 
-  getAverageScore(): number {
-    let avg = 0;
+  calculateAverageScore() {
+    this.averageScore = 0;
     for (const comment of this.comments) {
-      avg += comment.score;
+      this.averageScore += comment.score;
     }
-    return avg / this.comments.length;
+    this.averageScore = this.averageScore / this.comments.length;
   }
 
-  getWordFrequency(): [string, number][] {
+  calculateWordFrequency() {
     this.maxWordScore = null;
     this.minWordScore = null;
     const wordMap = new Map<string, number>();
 
     for (const comment of this.comments) {
-      const formattedComment = comment.text.replace(/[“”\/\[\].,#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-      const split = formattedComment.split(' ');
+      const formattedComment = comment.text.replace(/[“”\/\[\].,#!$%^&*;:{}=\-_`~()]/g, '').toLowerCase();
+      const split = Stopword.removeStopwords(formattedComment.split(' '));
       for (let word of split) {
         word = word.trim();
         if (word.length <= 25 && word.length > 0) {
@@ -101,18 +107,24 @@ export class RedditApiService {
       }
     }
 
-    return Array.from(wordMap.entries()).sort((a, b) => {
+    // remove words with count of one
+    this.wordFreqList = Array.from(wordMap);
+    for (let i = 0; i < this.wordFreqList.length; i++) {
+      if (this.wordFreqList[i][1] === 1) {
+        this.wordFreqList.splice(i, 1);
+        i--;
+      }
+    }
+
+    // sort and return word list
+    this.wordFreqList.sort((a, b) => {
       return b[1] - a[1];
     });
   }
 
-  getCommentsBestToWorst(): Comment[] {
-    if (this.comments) {
-      return this.comments.sort((a, b) => {
-        return b.score - a.score;
-      });
-    } else {
-      return null;
-    }
+  sortCommentsBestToWorst() {
+    this.comments.sort((a, b) => {
+      return b.score - a.score;
+    });
   }
 }

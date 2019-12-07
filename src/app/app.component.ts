@@ -10,7 +10,8 @@ import {Comment} from './objects/Comment';
 export class AppComponent {
   constructor(private redditApiService: RedditApiService) {}
 
-  getComments(): Comment[] {
-    return this.redditApiService.getCommentsBestToWorst();
+  // checks if subreddit data has been loaded
+  dataAvailable(): boolean {
+    return this.redditApiService.comments !== undefined;
   }
 }

@@ -12,19 +12,23 @@ export class ScoreHeaderComponent {
   constructor(private redditApiService: RedditApiService,
               private sentimentService: SentimentService) { }
 
+  // returns rating under toxicity scale
   getRating(score: number): string {
     return this.sentimentService.getRating(score);
   }
 
+  // returns subreddit name
   getSubreddit(): string {
     return this.redditApiService.subreddit;
   }
 
+  // returns average sentiment score for subreddit as a string
   getAverageScoreAsString(): string {
-    return this.redditApiService.getAverageScore().toFixed(3);
+    return this.getAverageScore().toFixed(3);
   }
 
+  // returns average sentiment score for subreddit
   getAverageScore(): number {
-    return this.redditApiService.getAverageScore();
+    return this.redditApiService.averageScore;
   }
 }
