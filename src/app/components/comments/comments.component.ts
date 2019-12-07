@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {Comment} from '../../objects/Comment';
-import {RedditApiService} from '../../services/reddit-api/reddit-api.service';
-import {SentimentService} from '../../services/sentiment/sentiment.service';
+import {RedditApiService} from '../../services/reddit-api.service';
+import {SentimentService} from '../../services/sentiment.service';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent {
 

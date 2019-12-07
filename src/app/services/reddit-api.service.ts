@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Comment} from '../../objects/Comment';
+import {Comment} from '../objects/Comment';
 import Submission from 'snoowrap/dist/objects/Submission';
 import Listing from 'snoowrap/dist/objects/Listing';
-import {SentimentService} from '../sentiment/sentiment.service';
+import {SentimentService} from './sentiment.service';
 import * as Snoowrap from 'snoowrap';
 import * as UUID from 'uuid/v1';
 

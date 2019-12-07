@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {SentimentService} from '../../services/sentiment/sentiment.service';
-import {RedditApiService} from '../../services/reddit-api/reddit-api.service';
+import {SentimentService} from '../../services/sentiment.service';
+import {RedditApiService} from '../../services/reddit-api.service';
 
 @Component({
   selector: 'app-score-header',
   templateUrl: './score-header.component.html',
-  styleUrls: ['./score-header.component.css']
+  styleUrls: ['./score-header.component.scss']
 })
 export class ScoreHeaderComponent {
 

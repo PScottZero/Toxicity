@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {RedditApiService} from '../../services/reddit-api/reddit-api.service';
-import {SentimentService} from '../../services/sentiment/sentiment.service';
+import {RedditApiService} from '../../services/reddit-api.service';
+import {SentimentService} from '../../services/sentiment.service';
 
 @Component({
   selector: 'app-best-worst-words',
   templateUrl: './best-worst-words.component.html',
-  styleUrls: ['./best-worst-words.component.css']
+  styleUrls: ['./best-worst-words.component.scss']
 })
 export class BestWorstWordsComponent {
 
