@@ -9,7 +9,6 @@
   @media screen and (max-width: $mobile_cutoff) {
     height: 0;
     overflow: hidden;
-    text-align: center;
     margin: 0 auto 0 auto;
     transition: 0.3s;
   }
@@ -18,7 +17,8 @@
 #sidebar {
   z-index: 1;
   position: fixed;
-  background: black;
+  background: #000000aa;
+  backdrop-filter: blur(20px);
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.50);
   text-align: center;
   color: #cccccc;
@@ -52,7 +52,7 @@
     margin-top: 5em;
     padding: .5em;
     border-radius: 5em;
-    background: #333;
+    background: #88888844;
     text-align: center;
     color: white;
 
@@ -99,11 +99,11 @@
 }
 
 .show_description {
-  height: 24em !important;
+  height: 29em !important;
 }
 
 .show_menu {
-  height: 34em !important;
+  height: 39em !important;
 }
 
 .rotate {

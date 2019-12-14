@@ -12,9 +12,10 @@ export class SidebarComponent {
 
   placeholder = 'Enter a subreddit';
   createdBy = 'Created by Paul Scott using Angular';
-  lastUpdated = 'Last Updated 7 December 2019';
+  lastUpdated = 'Last Updated 13 December 2019';
   description = 'Toxicity performs sentiment analysis on a large sample of comments from a given subreddit. ' +
     'The subreddit\'s "toxicity" is then rated using the following scale:';
+  notice = 'Note: Toxicity is only compatible with Chromium-based browsers';
 
   constructor(private redditApiService: RedditApiService) { }
 
