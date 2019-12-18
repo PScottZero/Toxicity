@@ -17,8 +17,8 @@
 #sidebar {
   z-index: 1;
   position: fixed;
-  background: #000000aa;
-  backdrop-filter: blur(20px);
+  background: #00000099;
+  backdrop-filter: blur(10px);
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.50);
   text-align: center;
   color: #cccccc;
@@ -52,7 +52,7 @@
     margin-top: 5em;
     padding: .5em;
     border-radius: 5em;
-    background: #88888844;
+    background: #88888833;
     text-align: center;
     color: white;
 
@@ -62,7 +62,6 @@
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 4px gray;
     }
 
     @media screen and (max-width: $mobile_cutoff) {

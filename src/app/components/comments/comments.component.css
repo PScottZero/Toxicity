@@ -1,0 +1,33 @@
+#comments_header {
+  text-align: center;
+  color: white;
+  padding: 2em 2em 0 2em;
+  background: #25667c;
+}
+#comments_header h1 {
+  font-size: 28px;
+  font-weight: normal;
+}
+@media screen and (max-width: 700px) {
+  #comments_header h1 {
+    font-size: 20px;
+  }
+}
+
+.comment {
+  padding: 2em;
+  word-break: break-word;
+  line-height: 2;
+}
+.comment p {
+  color: white;
+  font-size: 20px;
+}
+.comment:nth-child(even) {
+  background: #25667c;
+}
+.comment:nth-child(odd) {
+  background: #19435e;
+}
+
+/*# sourceMappingURL=comments.component.css.map */
