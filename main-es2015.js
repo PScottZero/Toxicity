@@ -709,7 +709,7 @@ let SidebarComponent = class SidebarComponent {
         this.showDropDown = false;
         this.placeholder = 'Enter a subreddit';
         this.createdBy = 'Created by Paul Scott using Angular';
-        this.lastUpdated = 'Last Updated 13 December 2019';
+        this.lastUpdated = 'Last Updated 18 December 2019';
         this.description = 'Toxicity performs sentiment analysis on a large sample of comments from a given subreddit. ' +
             'The subreddit\'s "toxicity" is then rated using the following scale:';
         this.notice = 'Note: Toxicity is only compatible with Chromium-based browsers';
