@@ -1,17 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Comment} from '../objects/Comment';
+import { Injectable } from '@angular/core';
+import { Comment } from '../objects/Comment';
 import Submission from 'snoowrap/dist/objects/Submission';
 import Listing from 'snoowrap/dist/objects/Listing';
-import {SentimentService} from './sentiment.service';
+import { SentimentService } from './sentiment.service';
 import * as Stopword from 'stopword';
 import * as Snoowrap from 'snoowrap';
-import * as UUID from 'uuid/v1';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RedditApiService {
-
   comments: Comment[];
   subreddit: string;
   bestWord: string;
@@ -30,8 +29,8 @@ export class RedditApiService {
     // @ts-ignore
     Snoowrap.fromApplicationOnlyAuth({
       clientId: 'eYt3lQ43V4Dgcg',
-      deviceId: UUID()
-    }).then(r => {
+      deviceId: uuidv4(),
+    }).then((r) => {
       this.snoowrap = r;
     });
   }
@@ -40,29 +39,35 @@ export class RedditApiService {
     this.comments = [];
     this.subreddit = subreddit;
 
-    this.getHotPostsFromSubreddit(subreddit)
-      .then(posts => {
-        for (const post of posts) {
-          this.getPostComments(post.id)
-            .then(expandedPost => {
-              for (const comment of expandedPost.comments) {
-                this.comments.push(new Comment(comment.body,
-                  this.sentimentService.calculateScore(comment.body)));
-              }
-              this.calculateAverageScore();
-              this.sortCommentsBestToWorst();
-              this.calculateWordFrequency();
-            });
-        }
-      });
+    this.getHotPostsFromSubreddit(subreddit).then((posts) => {
+      for (const post of posts) {
+        this.getPostComments(post.id).then((expandedPost) => {
+          for (const comment of expandedPost.comments) {
+            this.comments.push(
+              new Comment(
+                comment.body,
+                this.sentimentService.calculateScore(comment.body)
+              )
+            );
+          }
+          this.calculateAverageScore();
+          this.sortCommentsBestToWorst();
+          this.calculateWordFrequency();
+        });
+      }
+    });
   }
 
-  private getHotPostsFromSubreddit(subreddit: string): Promise<Listing<Submission>> {
-    return this.snoowrap.getSubreddit(subreddit).getHot({limit: 10});
+  private getHotPostsFromSubreddit(
+    subreddit: string
+  ): Promise<Listing<Submission>> {
+    return this.snoowrap.getSubreddit(subreddit).getHot({ limit: 10 });
   }
 
   private getPostComments(postId: string): Promise<Submission> {
-    return this.snoowrap.getSubmission(postId).expandReplies({limit: 20, depth: 1});
+    return this.snoowrap
+      .getSubmission(postId)
+      .expandReplies({ limit: 20, depth: 1 });
   }
 
   calculateAverageScore() {
@@ -79,19 +84,20 @@ export class RedditApiService {
     const wordMap = new Map<string, number>();
 
     for (const comment of this.comments) {
-      const formattedComment = comment.text.replace(/[“”\/\[\].,#!$%^&*;:{}=\-_`~()]/g, '').toLowerCase();
+      const formattedComment = comment.text
+        .replace(/[“”\/\[\].,#!$%^&*;:{}=\-_`~()]/g, '')
+        .toLowerCase();
       const split = Stopword.removeStopwords(formattedComment.split(' '));
       for (let word of split) {
         word = word.trim();
         if (word.length <= 25 && word.length > 0) {
-
           // calculate best and worst words
           const score = this.sentimentService.calculateScore(word);
-          if (!(this.maxWordScore) || score > this.maxWordScore) {
+          if (!this.maxWordScore || score > this.maxWordScore) {
             this.bestWord = word;
             this.maxWordScore = score;
           }
-          if (!(this.minWordScore) || score < this.minWordScore) {
+          if (!this.minWordScore || score < this.minWordScore) {
             this.worstWord = word;
             this.minWordScore = score;
           }

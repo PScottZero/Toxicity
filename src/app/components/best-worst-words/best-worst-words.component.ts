@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
-import {RedditApiService} from '../../services/reddit-api.service';
-import {SentimentService} from '../../services/sentiment.service';
+import { Component } from '@angular/core';
+import { RedditApiService } from '../../services/reddit-api.service';
+import { SentimentService } from '../../services/sentiment.service';
 
 @Component({
   selector: 'app-best-worst-words',
   templateUrl: './best-worst-words.component.html',
-  styleUrls: ['./best-worst-words.component.scss']
+  styleUrls: ['./best-worst-words.component.scss'],
 })
 export class BestWorstWordsComponent {
-
-  constructor(private redditApiService: RedditApiService,
-              private sentimentService: SentimentService) { }
+  constructor(
+    private redditApiService: RedditApiService,
+    private sentimentService: SentimentService
+  ) {}
 
   // returns toxicity scale rating for word
   getRating(score: number): string {

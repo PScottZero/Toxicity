@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import * as Sentiment from 'sentiment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SentimentService {
-
   getRating(score: number): string {
     if (score >= 2) {
       return 'Non-Toxic';

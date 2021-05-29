@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
-import {SentimentService} from '../../services/sentiment.service';
-import {RedditApiService} from '../../services/reddit-api.service';
+import { Component } from '@angular/core';
+import { SentimentService } from '../../services/sentiment.service';
+import { RedditApiService } from '../../services/reddit-api.service';
 
 @Component({
   selector: 'app-score-header',
   templateUrl: './score-header.component.html',
-  styleUrls: ['./score-header.component.scss']
+  styleUrls: ['./score-header.component.scss'],
 })
 export class ScoreHeaderComponent {
-
-  constructor(private redditApiService: RedditApiService,
-              private sentimentService: SentimentService) { }
+  constructor(
+    private redditApiService: RedditApiService,
+    private sentimentService: SentimentService
+  ) {}
 
   // returns rating under toxicity scale
   getRating(score: number): string {

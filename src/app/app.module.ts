@@ -16,13 +16,10 @@ import { WordFrequencyComponent } from './components/word-frequency/word-frequen
     CommentsComponent,
     ScoreHeaderComponent,
     SidebarComponent,
-    WordFrequencyComponent
+    WordFrequencyComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
